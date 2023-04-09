@@ -1,0 +1,10 @@
+#Flask
+
+*Need to activate each time you work on project.
+To start: source flask-server/venv/bin/activate
+To stop: deactivate
+
+
+#React
+
+To start: npm start
