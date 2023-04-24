@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 def scrape():
-    source = requests.get('https://www.basketball-reference.com/leagues/NBA_2023_per_game.html#per_game_stats::pts_per_g')
+    source = requests.get('https://www.basketball-reference.com/leagues/NBA_2023_per_game.html')
     source.raise_for_status()
 
     soup = BeautifulSoup(source.text, 'html.parser')

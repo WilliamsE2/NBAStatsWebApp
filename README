@@ -1,7 +1,7 @@
 #Flask
 
 *Need to activate each time you work on project.
-To start: source flask-server/venv/bin/activate
+To start: source venv/bin/activate
 To stop: deactivate
 
 
