@@ -17,43 +17,52 @@ def aggregate():
     player_list = []
     player_data = scrape()
     
+    player_id = 1;
+    
     for player in player_data:
         stats = player.find_all('td')
+        fg_percentage_value =  stats[9].text if len(stats[9].text) == 0 else float(stats[9].text)
+        three_fg_percentage_value =  stats[12].text if len(stats[12].text) == 0 else float(stats[12].text)
+        two_fg_percentage_value =  stats[15].text if len(stats[15].text) == 0 else float(stats[15].text)
+        efg_percentage_value =  stats[16].text if len(stats[16].text) == 0 else float(stats[16].text)
+        ft_percentage_value =  stats[19].text if len(stats[19].text) == 0 else float(stats[19].text)
         player_list.append({
-            "Player": stats[0].text,
-            "Position": stats[1].text,
-            "Age": stats[2].text,
-            "Team": stats[3].text,
-            "Games Played": stats[4].text,
-            "Games Started": stats[5].text,
-            "Minutes Played Per Game": stats[6].text,
-            "Field Goals Per Game": stats[7].text,
-            "Field Goal Attempts Per Game": stats[8].text,
-            "Field Goal Percentage": stats[9].text,
-            "3-Point Field Goals Per Game": stats[10].text,
-            "3-Point Field Goal Attempts Per Game": stats[11].text,
-            "3-Point Field Goal Percentage": stats[12].text,
-            "2-Point Field Goals Per Game": stats[13].text,
-            "2-Point Field Goal Attempts Per Game": stats[14].text,
-            "2-Point Field Goal Percentage": stats[15].text,
-            "Effective Field Goal Percentage": stats[16].text,
-            "Free Throws Per Game": stats[17].text,
-            "Free Throw Attempts Per Game": stats[18].text,
-            "Free Throw Percentage": stats[19].text,
-            "Offensive Rebounds Per Game": stats[20].text,
-            "Defensive Rebounds Per Game": stats[21].text,
-            "Total Rebounds Per Game": stats[22].text,
-            "Assists Per Game": stats[23].text,
-            "Steals Per Game": stats[24].text,
-            "Blocks Per Game": stats[25].text,
-            "Turnovers Per Game": stats[26].text,
-            "Personal Fouls Per Game": stats[27].text,
-            "Points Per Game": stats[28].text
+            "id": player_id,
+            "player": stats[0].text,
+            "position": stats[1].text,
+            "age": float(stats[2].text),
+            "team": stats[3].text,
+            "gamesPlayed": float(stats[4].text),
+            "gamesStarted": float(stats[5].text),
+            "minutesPlayedPerGame": float(stats[6].text),
+            "fieldGoalsPerGame": float(stats[7].text),
+            "fieldGoalAttemptsPerGame": float(stats[8].text),
+            "fieldGoalPercentage": fg_percentage_value,
+            "threePointFieldGoalsPerGame": float(stats[10].text),
+            "threePointFieldGoalAttemptsPerGame": float(stats[11].text),
+            "threePointFieldGoalPercentage": three_fg_percentage_value,
+            "twoPointFieldGoalsPerGame": float(stats[13].text),
+            "twoPointFieldGoalAttemptsPerGame": float(stats[14].text),
+            "twoPointFieldGoalPercentage": two_fg_percentage_value,
+            "effectiveFieldGoalPercentage": efg_percentage_value,
+            "freeThrowsPerGame": float(stats[17].text),
+            "freeThrowAttemptsPerGame": float(stats[18].text),
+            "freeThrowPercentage": ft_percentage_value,
+            "offensiveReboundsPerGame": float(stats[20].text),
+            "defensiveReboundsPerGame": float(stats[21].text),
+            "totalReboundsPerGame": float(stats[22].text),
+            "assistsPerGame": float(stats[23].text),
+            "stealsPerGame": float(stats[24].text),
+            "blocksPerGame": float(stats[25].text),
+            "turnoversPerGame": float(stats[26].text),
+            "personalFoulsPerGame": float(stats[27].text),
+            "pointsPerGame": float(stats[28].text)
         })
+        player_id += 1
     
     return jsonify(player_list)
 
-@app.route("/members")
+@app.route("/players")
 def members():
     return aggregate()
 
