@@ -1,0 +1,45 @@
+* {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.main-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Tahoma', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 100%;
+    background-color: white;
+}
+
+.logo {
+    text-align: center;
+}
+
+.table-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 90%;
+    background-color: red;
+}
+
+.table-header {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.table-entry {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.pagination-bar {
+    text-align: center;
+    font-size: 0.9em;
+}
