@@ -67,16 +67,17 @@ function App() {
 
   return (
     <div className='main-view'>
-      <div className='logo'>
-        <h1>NBA Stats</h1>
+      <div className='title-view'>
+        <img className='nba-logo' src={require('./nba-logo-transparent.png')} alt='NBA Logo'/>
+        <h1 className='nba-title'>NBA Stats</h1>
       </div>
       <div className='table-view'>
         <table>
           <thead>
             <tr>
-              <th className='table-header'></th>
-              <th className='table-header'>Player</th>
-              <th className='table-header'>Position</th>
+              <th className='table-header no-cursor'>Team</th>
+              <th className='table-header no-cursor'>Player</th>
+              <th className='table-header no-cursor'>Position</th>
               <th className='table-header' onClick={() => applySorting('age', !sorting.ascending)}>Age</th>
               <th className='table-header' onClick={() => applySorting('offensiveReboundsPerGame', !sorting.ascending)}>ORB</th>
               <th className='table-header' onClick={() => applySorting('defensiveReboundsPerGame', !sorting.ascending)}>DRB</th>
@@ -130,7 +131,7 @@ function App() {
                 <td className='table-entry'>{item.freeThrowAttemptsPerGame}</td>
                 <td className='table-entry'>{item.freeThrowPercentage}</td>
                 <td className='table-entry'>{item.effectiveFieldGoalPercentage}</td>
-                <td className='table-entry'>{item.pointsPerGame}</td>
+                <td className='table-entry points-column'>{item.pointsPerGame}</td>
               </tr>
             )}
           </tbody>
